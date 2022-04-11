@@ -1,0 +1,82 @@
+{% extends 'front_end_templates/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+       <div class="page-title"><h2>Blog</h2></div>
+        </div>
+        <!--col-xs-12-->
+      </div>
+      <!--row-->
+    </div>
+    <!--container-->
+  </div>    	
+<!-- BEGIN Main Container -->  
+       <div class="main-container col2-right-layout">
+	       <div class="main container">
+            {% include 'front_end_templates/blog_sidebar.html' %} 
+	                          
+<div class="col-main col-sm-9 main-blog" style="visibility: visible;">
+  	<!--<div class="page-title"><h2></h2></div>-->
+<div id="main" class="blog-wrapper">
+    
+	<div id="primary" class="site-content">
+		<div id="content" role="main">
+							<article id="post-29" class="blog_entry clearfix">
+					
+					<div class="entry-content">
+						<div class="featured-thumb"><a href="#"><img src="{{ posts.blog_img.url }}" alt="blog-img4"></a></div>
+                        <header class="blog_entry-header clearfix">
+                                          <div class="blog_entry-header-inner">
+						<h1 class="blog_entry-title">{{ posts.title}}</h1>
+                                          </div> <!--blog_entry-header-inner-->
+					</header> <!--blog_entry-header clearfix-->
+                     
+<div class="entry-content">
+<ul class="post-meta">
+                          <li><i class="fa fa-user"></i>posted by <a href="#">adyyymin</a> </li>
+                          <li><i class="fa fa-comments"></i><a href="#">8 comments</a> </li>
+                          <li><i class="fa fa-clock-o"></i><span class="day">12</span> <span class="month">Feb</span></li>
+                        </ul>
+         <div class="thm-post">
+<p>{{ posts.content }}</p>
+</div>		
+<div class="social">
+  <ul class="link">
+    {% load social_share %}
+   <li>{% post_to_facebook object_or_url  %}</li>
+  <li>{% post_to_linkedin object_or_url %}</li> 
+   <li>{% post_to_telegram "New Song: " object_or_url %}</li>
+   <li>{% post_to_twitter object_or_url %}</li>
+   <li>{% post_to_whatsapp object_or_url %}</li>
+  </ul>
+</div>
+			</div>
+					</div>
+				</article>
+                
+							
+		</div>
+	</div>
+
+</div> <!--#main wrapper grid_8-->
+
+        
+
+  </div> <!--col-main col-sm-9-->
+            </div>    
+	       </div><!--main-container-->
+
+        </div> <!--col2-layout-->
+     
+      </div>  
+
+
+ 
+  <!-- For version 1,2,3,4,6 -->
+
+  {% endblock %}
+  

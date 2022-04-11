@@ -1,0 +1,55 @@
+{% load static %}
+<div class="main-container col2-right-layout">
+    <div class="main container">
+      <div class="row">
+        <div class="col-left sidebar col-sm-3 blog-side">
+        <div class="block widget_search"><form id="searchform" action="{% url 'blogsearchbar' %}" method="get">
+      <div class="input-group">
+         <input type="text" name="search" id="s" placeholder="Search For" class="input-text" autocomplete="off">
+         <div class="input-group-append">
+            <button type="submit" class="thm-search"><i class="fa fa-search"></i></button>
+         </div>
+      </div>
+  </form>
+  </div>
+
+
+  <div id="categories-2" class="widget widget_categories block" style="visibility: visible;">
+    <h2 class="widget-title">Categories</h2>
+    {% for postCategory in postCategories %}
+    <ul>
+    <li><a href="{% url 'blog_list' %}?postCategory={{ postCategory.name}}">{{ postCategory.name}}</a> <span class="count">{{ forloop.counter }}</span></li>
+
+   </ul>
+   {% endfor %}
+  </div>
+
+
+<div id="secondary" class="widget_wrapper13" role="complementary">
+    <div id="recent-posts-4" class="popular-posts widget block" style="visibility: visible;">
+      <h2 class="widget-title">Most Popular Posts</h2>
+        <ul class="posts-list unstyled clearfix">
+          {% for post in is_trending %}
+          <li>
+    <figure class="featured-thumb"> <a href="#"> <img src="/media/{{ post.blog_img }}" alt="blog image"> </a> </figure>
+            <!--featured-thumb-->
+            <div class="content-info">
+              <h4><a href="#" title="Lorem ipsum dolor sit amet">{{ post.title}}</a></h4>
+              <p class="post-meta">
+                <time class="entry-date">Jan 10, 2018 .</time>
+                .</p>
+            </div>
+          </li>
+          <li>
+          {% endfor %}
+        </ul>
+
+      <!--widget-content--> 
+    </div>
+
+    <!-- Banner Text Block -->
+    
+   
+    </div>
+
+</div>

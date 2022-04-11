@@ -1,0 +1,23 @@
+<aside class="col-right sidebar col-sm-3 col-xs-12 wow bounceInUp animated animated" style="visibility: visible;">
+    <div class="block block-account">
+      <div class="block-title"> My Account </div>
+      <div class="block-content">
+        <ul>
+          <li class="current"><a href="{% url 'category_list' %}">Category list</a></li>
+          <li><a href="{% url 'category_create' %}"><span> Category create</span></a></li>
+          <li><a href="{% url  'sub_category_list' %}"><span> Sub Categories list</span></a></li>
+          <li><a href="{% url 'sub_category_create' %}"><span> Sub Categories create</span></a></li>
+          <li><a href="{% url 'merchant_list' %}"><span> Machant list</span></a></li>
+          <li><a href="{% url 'merchant_create' %}"><span> Machant create</span></a></li>
+          <li><a href="{% url 'product_create' %}"><span> Product list</span></a></li>
+          <li><a href="#"><span> Product create</span></a></li>
+        </ul>
+        <button type="button" title="Create an Account" class="button create-account" onClick=""><a href="{% url 'admin_logout_process' %}"><span><span>Logout</span></span></a></button>
+
+      </div>
+      <!--block-content--> 
+    </div>
+    <!--block block-account-->
+    
+
+  </aside>

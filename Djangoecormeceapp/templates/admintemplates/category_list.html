@@ -1,0 +1,97 @@
+{% extends 'admintemplates/basee.html' %}
+{% load static %}
+
+
+
+
+
+<!--BLOCK FOR PAGE CONTENT-->
+{% block header %}
+
+
+<div class="page-heading">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+      <div class="page-title">
+           <h2>CATEGORIES LIST</h2>
+             </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock header %}
+
+{% block page_content %}
+  
+              <div class="pages">
+                <ul class="pagination">
+                  <li><a href="#">&laquo;</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                  <li><a href="#">&raquo;</a></li>
+                </ul>
+              </div>
+              <div class="recent-orders">
+                
+                <div class="table-responsive">
+                  <table class="data-table table-striped" id="my-orders-table">
+                    <colgroup>
+                    <col width="">
+                    <col width="">
+                    <col>
+                    <col width="1">
+                    <col width="1">
+                    <col width="20%">
+                    </colgroup>
+                    <thead>
+                      <tr class="first last">
+                        <th>Name </th>
+                        <th>Url slug </th>
+                        <th>Ship To</th>
+                        <th><span class="nobr">created_at</span></th>
+                        <th>Status</th>
+                        <th>&nbsp;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {%  for category in categories_list %}
+                      <tr class="first odd">
+                        <td>{{ category.title }}</td>
+                        <td><span class="nobr">{{ category.url_slug }}</span></td>
+                        <td>{{ category.title }}</td>
+                        <td><span class="price">{{ category.created_at }}</span></td>
+                        <td><em>Pending</em></td>
+                        <td class="a-center last"><span class="nobr"> <a href="{% url 'category_update' category.id %}">EDIT</a> </span></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                <!--table-responsive-->                 
+              </div>
+              <div>
+
+              </div>
+              <div class="pages">
+                <ul class="pagination">
+                  <li><a href="#">&laquo;</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                  <li><a href="#">&raquo;</a></li>
+                </ul>
+              </div>
+              <!--recent-orders-->
+          
+  {% endblock page_content %}
+
+    
+   
+ 
