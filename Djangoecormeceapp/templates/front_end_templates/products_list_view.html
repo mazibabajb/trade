@@ -95,9 +95,10 @@
               <div class="actions">
                 <span class="add-to-links"> 
                 
-                  
-                    <button type="submit" class="button link-wishlist"><span>Product Detail</span><a href="{% url 'product_detail' products.id %}">Product Detail</a></button>
-                  
+                  <form action="{% url 'product_detail' products.id %}" method="get">
+                    <input type="hidden" name="product-id" value="{{ product.id }}">
+                 <button type="submit" class="button link-wishlist"><span>Product Detail</span>Product Detail</button>
+                </form>
    
                   <a title="Add to Compare" class="button link-compare" href="#"><span>Viewsffffff</span>Product Views</a> </span> </div>
             </div>
