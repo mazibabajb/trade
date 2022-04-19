@@ -1,3 +1,4 @@
+from ipaddress import ip_address
 from os import name
 from turtle import title
 from django.db import models
@@ -86,8 +87,6 @@ class SubCategories(models.Model):
     def __str__(self):
         return self.title
 
-class IpAdress(models.Model):
-    ip = models.CharField(max_length=100)
 
 
 
@@ -111,14 +110,43 @@ class Products(models.Model):
     is_onsale = models.BooleanField(default=False)
     is_hot = models.BooleanField(default=False)
     in_stock_total = models.IntegerField(default=1)
-    views = models.ManyToManyField(IpAdress, blank=True, related_name="product_views")
     is_active = models.IntegerField(default=1) 
+    liked = models.ManyToManyField(CustomUser, default=None,blank=True,related_name='liked')
+    
+    
+    @property
+    def num_likes(self):
+        return self.liked.all().count()
 
     def __str__(self):
         return self.product_name
 
     def get_absolute_url(self):
         return reverse("product_detail",args=[self.id])
+
+LIKED_CHOICES = (
+	('like','like'),
+	('Liked','Liked')
+)
+
+class Like(models.Model):
+	user = models.ForeignKey(CustomUser,on_delete=models.CASCADE)	
+	product = models.ForeignKey(Products,on_delete=models.CASCADE)
+	value = models.CharField(choices= LIKED_CHOICES , default="Liked",max_length=100)
+
+	def __str__(self):
+		return self.product
+
+
+
+class ProductViewCount(models.Model):
+    product = models.ForeignKey(Products,related_name="product_veiw_count", on_delete=models.CASCADE)
+    ip_address = models.CharField(max_length=100)
+    session = models.CharField(max_length=100,)
+
+    def __str__(self):
+        return f"{self.ip_address}"
+
 
 
 class Product_images(models.Model):

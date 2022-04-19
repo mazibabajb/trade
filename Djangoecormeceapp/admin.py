@@ -37,6 +37,6 @@ admin.site.register(CustomUser)
 admin.site.register(AdminUser)
 admin.site.register(MerchantUser)
 admin.site.register(Product_images)
-admin.site.register(IpAdress)
 admin.site.register(AffiliateUser)
+admin.site.register(Like)
 

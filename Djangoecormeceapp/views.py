@@ -1,14 +1,16 @@
+from itertools import product
 from multiprocessing import context
 from turtle import title
+from venv import create
 from django.forms.forms import Form
-from django.shortcuts import render
+from django.shortcuts import render,redirect,get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.http import HttpResponse,HttpResponseRedirect, request
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.urls import reverse
 from django.views.generic.detail import DetailView
-from Djangoecormeceapp.models import Contact_us, ProductMedia, Products, Categories,SubCategories,Commentform,ProductReviews,Email, Search
+from Djangoecormeceapp.models import *
 from blog.models import Post
 from django.core.paginator import Paginator , EmptyPage
 from cart.forms import CartAddProductForm
@@ -40,7 +42,27 @@ def erro_page(request,exception):
     }
     return render(request,"front_end_templates/error.html",context)
 
+def liked_post(request):
+    user = request.user
+    if request.method == 'POST':
+        product_id = request.POST.get('products_id')
+        product_obj = Products.objects.get(id=product_id)
 
+        if user in product_obj.liked.all():
+            product_obj.liked.remove(user)
+        else:
+            product_obj.liked.add(user)
+
+        like, created = Like.objects.get_or_create(user=user,product_id=product_id)
+
+        if not created:
+            if like.value == 'like':
+                like.value == 'unlike'
+            else:
+                like.value == 'like'
+        like.save()
+    return redirect('product_list_view')
+    
 
 def emailsubscription(request):
     if request.method == 'POST':
@@ -89,7 +111,7 @@ def Product_view(request):
         	
 	productCategories = SubCategories.objects.all()
 	page_num = request.GET.get('page', 1)
-	p = Paginator(products, 3)
+	p = Paginator(products, 7)
 
 	try:
 		page = p.page(page_num)
@@ -112,6 +134,12 @@ def get_ip(request):
     return ip
 
 def product_detail(request, id):
+    product = get_object_or_404(Products,id=id)
+    ip = request.META["REMOTE_ADDR"]
+    if not ProductViewCount.objects.filter(product=product,session = request.session.session_key):
+        veiw = ProductViewCount(product=product,ip_address=ip,session = request.session.session_key)
+        veiw.save()
+    product_veiw_counter = ProductViewCount.objects.filter(product=product)
     products = Products.objects.get(id=id)
     product_images = ProductMedia.objects.all()
     related_products = Products.objects.filter(subcategories_id = products.subcategories_id).exclude(id=id)[:2]
@@ -122,7 +150,8 @@ def product_detail(request, id):
         'related_products': related_products,
         'product_images': product_images,
         'title':products.title,
-        'description':products.description 
+        'description':products.description ,
+        'product_veiw_counter':product_veiw_counter
 		
 	}
     return render(request, "front_end_templates/products_detail.html",context)
@@ -173,10 +202,6 @@ class ProductDetailView(DetailView):
     model = Products
     template_name = "front_end_templates/products_detail.html"
 
-
-
-	 
-    
 
 def AboutUs(request):
     context = {

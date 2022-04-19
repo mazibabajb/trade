@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'books',
     'basket',
     'accounts',
+    'accomo',
     'django_social_share',
     
 ]

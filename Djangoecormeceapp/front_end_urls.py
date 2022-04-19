@@ -5,8 +5,9 @@ from Djangoecormeceapp import AdminView
 
 
 urlpatterns = [
-    path('home/',views.home, name="home"),
+    path('',views.home, name="home"),
     path('productlist/',views.ProductListView.as_view(), name="productlist"),
+    path('like/',views.liked_post, name='liked-post'),
     path('product_detail/<int:id>/',views.product_detail, name="product_detail"),
     path('home_product_detail/<int:id>/',views.home_product_detail, name ='home_product_detail'),
     path('contact_us/',views.Contact_Us, name="contact_us"),
@@ -16,8 +17,9 @@ urlpatterns = [
     path('payments/',views.Payments, name="payments"),
     path('faqs/',views.Faqs, name="faqs"),
     path('deliveries/',views.Deliveries, name="deliveries"),
-    path('',views.Product_view, name="product_list_view"),
+    path('product_list_view',views.Product_view, name="product_list_view"),
     path('searchbar/',views.searchbar, name="searchbar"),
     path('terms/',views.terms, name="terms"),
+    
      
 ]

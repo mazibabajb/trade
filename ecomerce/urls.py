@@ -47,6 +47,7 @@ urlpatterns = [
     path('profiles',my_recommendations_view,name = 'profiles'),
     path('sitemap.xml',sitemap,{'sitemaps':sitemaps}),
     path('',include("Djangoecormeceapp.front_end_urls")),
+    path('',include("accomo.urls")),
     path('admin_dashboard/',include("Djangoecormeceapp.adminurls")),
     path('merchant_dashboard/',include("Djangoecormeceapp.merchant_urls")),
     path('affilliate_dashboard/',include("Djangoecormeceapp.affilliate_urls")),
