@@ -27,23 +27,4 @@ def book_detail(request, id):
 
 
 def book_list(request):
-	bookcategory = request.GET.get('bookcategory ')
-	if bookcategory  == None:
-		books = Book.objects.all()
-	else:
-		books = Book.objects.filter(category__title=Category)	
-        	
-	bookCategories = Category.objects.all()
-	page_num = request.GET.get('page', 1)
-	p = Paginator(books, 1)
-
-	try:
-		page = p.page(page_num)
-
-	except EmptyPage:
-		page = p.page(1)
-    
-	context = {	'books':page ,
-				'bookCategories':bookCategories,
-				}
-	return render(request, 'books/book_list.html',context)
+	return render(request, 'books/book_list.html')

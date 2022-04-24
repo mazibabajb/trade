@@ -15,8 +15,8 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     auther = models.CharField(max_length=200)
     category = models.ForeignKey(Category , on_delete=models.CASCADE)
-    book_file = models.FileField(upload_to='cars',default='default-car.png')
-    book_thumbnail = models.ImageField(upload_to='cars',default='default-car.png')
+    book_file = models.FileField(upload_to='cars')
+    book_thumbnail = models.ImageField(upload_to='cars',default='default.PNG')
     merchant = models.ForeignKey(MerchantUser,on_delete=models.CASCADE)
 
 

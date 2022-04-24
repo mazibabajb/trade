@@ -121,7 +121,7 @@
                         <!--sub sub category-->
                        
                       </li>
-                      <li class="level0 parent drop-menu"> <a class="level-top" href="{% url 'book_list'  %}"><span></span></a>
+                      <li class="level0 parent drop-menu"> <a class="level-top" href="{% url 'book_list'  %}"><span>Books</span></a>
                       <li class="level0 parent drop-menu"> <a class="level-top" href="{% url 'blog_list'  %}"><span>Blog</span></a>
                       </li>
                       <li class="active"> <a class="level-top" href="{% url 'about_us' %}"><span>About Us</span></a></li>
@@ -316,8 +316,28 @@
                                 </ul>
                                 <!--level0--> 
     </li>
-    <li><a href="{% url 'book_list'  %}">Books</a></li>
-    <li><a href="{% url 'blog_list' %}">Blog</a></li>
+    <li class="level3 nav-6-1 parent item"> <a href="{% url 'book_list' %}"><span>ALL BOOKS</span></a> 
+      <!--sub sub category-->
+      <ul class="level1">
+        {% for bookcategory in bookCategories %}
+        <li class="level2 nav-6-1-1"><a href="{% url 'book_list' %}?bookcategory={{ bookcategory.name}}"><span>{{ bookcategory.name}}</span></a> </li>
+        <!--level2 nav-6-1-1-->
+        {% endfor %}
+      </ul>
+      <!--level1--> 
+      <!--sub sub category--> 
+    </li>
+    <li class="level3 nav-6-1 parent item"> <a href="{% url 'property_list' %}"><span>ALL PROPERTIES</span></a> 
+      <!--sub sub category-->
+      <ul class="level1">
+        {% for propertyCategory in propertyCategories %}
+        <li class="level2 nav-6-1-1"><a href="{% url 'property_list' %}?propertyCategory={{ propertyCategory.name}}"><span>{{ propertyCategory.name}}</span></a> </li>
+        <!--level2 nav-6-1-1-->
+        {% endfor %}
+      </ul>
+      <!--level1--> 
+      <!--sub sub category--> 
+    </li>
     <li><a href="{% url 'about_us' %}">About Us‎</a></li>
     <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
    </ul>

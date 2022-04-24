@@ -104,7 +104,7 @@ class Products(models.Model):
     product_discount_price = models.CharField(max_length=255,default=False)
     product_description = models.TextField()
     product_Long_description = models.TextField(blank=True)
-    product_img = models.ImageField(upload_to='cars',default='default-car.png') 
+    product_img = models.ImageField(upload_to='cars',default='default.PNG') 
     created_at = models.DateTimeField(auto_now_add=True)
     added_by_mechant = models.ForeignKey(MerchantUser,on_delete=models.CASCADE)
     is_onsale = models.BooleanField(default=False)

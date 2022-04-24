@@ -103,26 +103,7 @@ def home_product_detail(request, id, url_slug):
 
 
 def Product_view(request):
-	productCategory = request.GET.get('productCategory')
-	if productCategory == None:
-		products = Products.objects.all()
-	else:
-		products = Products.objects.filter(subcategories_id__title=productCategory)	
-        	
-	productCategories = SubCategories.objects.all()
-	page_num = request.GET.get('page', 1)
-	p = Paginator(products, 7)
-
-	try:
-		page = p.page(page_num)
-
-	except EmptyPage:
-		page = p.page(1)
-    
-	context = {	'products':page ,
-				'productCategories':productCategories,
-				}
-	return render(request, 'front_end_templates/products_list_view.html',context)
+	return render(request, 'front_end_templates/products_list_view.html')
 
 
 def get_ip(request):

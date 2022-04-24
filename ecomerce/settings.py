@@ -82,6 +82,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'basket.context_processors.basket',
+                'Djangoecormeceapp.context_processor.product_listing',
+                'blog.context_processor.post_list',
+                'books.context_processor.book_listings',
+                'accomo.context_processor.Property_listings',
+                
 
                 
             ],

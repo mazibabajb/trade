@@ -14,7 +14,7 @@
     <!--container--> 
   </div>
   <div class="page-title">
-    <h2>PRODUCT LISTING</h2>
+    <h2>PROPERTY LISTING</h2>
   </div>
 </div>
 <!--breadcrumbs--> 
@@ -37,61 +37,61 @@
                 </li>
               </ul>
               <a class="button-asc left" href="#" title="Set Descending Direction"><span class="top_arrow"></span></a> </div>
-            <div class="pager">
-              <div id="limiter">
-                <label>View: </label>
-                <ul>
-                  <li><a href="#">15<span class="right-arrow"></span></a>
-                    
-                  </li>
-                </ul>
-              </div>
-              <div class="pages">
-                <label>Page:</label>
-                <ul class="pagination">
+              <div class="pager">
+                <div id="limiter">
+                  <label>View: </label>
+                  <ul>
+                    <li><a href="#">15<span class="right-arrow"></span></a>
+                      
+                    </li>
+                  </ul>
+                </div>
+                <div class="pages">
+                  <label>Page:</label>
                   <ul class="pagination">
-                  {% if products.has_previous %}
+                    {% if property.has_previous %}
+                   <li class="page-item">
+                  <a class="page-link" href="?page={{ property.previous_page_number }}">Previous</a>
+                </li>
+                  {% else %}
+                 <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                 </li>
+                 {% endif %}
+  
+                  {% for i in property.paginator.page_range %}
+                 {% if i == property_list.number %}
+                 <li class="page-item active"><a class="page-link">{{i}}</a></li>
+                 {% else %}
+                 <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                 {% endif %}
+                 {% endfor %}
+  
+                 {% if property.has_next %}
                  <li class="page-item">
-                <a class="page-link" href="?page={{ products.previous_page_number }}">Previous</a>
-              </li>
-                {% else %}
-               <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-               </li>
-               {% endif %}
-
-                {% for i in products.paginator.page_range %}
-               {% if i == product_list.number %}
-               <li class="page-item active"><a class="page-link">{{i}}</a></li>
-               {% else %}
-               <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
-               {% endif %}
-               {% endfor %}
-
-               {% if products.has_next %}
-               <li class="page-item">
-                 <a class="page-link" href="?page={{ products.next_page_number }}">Next</a>
-              </li>
-               {% else %}
-               <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
-               </li>
-               {% endif %}
-              </ul>
+                   <a class="page-link" href="?page={{ book.next_page_number }}">Next</a>
+                </li>
+                 {% else %}
+                 <li class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                 </li>
+                 {% endif %}
+               </ul>              
+  
+                </div>
               </div>
             </div>
-          </div>
           <div class="category-products">
             <ol class="products-list" id="products-list">
-          {% for product in property %}
+          {% for pro in property %}
           <li class="item even">
-            <div class="product-image"> <a href="product-detail.html" title="19&quot; Widescreen LCD Monitor"> <img class="small-image" src="{{ product.product_img.url }}" alt="19&quot; Widescreen LCD Monitor"> </a> </div>
+            <div class="product-image"> <a href="product-detail.html" title="19&quot; Widescreen LCD Monitor"> <img class="small-image" src="{{ pro.property_images.url }}" alt="19&quot; Widescreen LCD Monitor"> </a> </div>
             <div class="product-shop">
               
-              <h2 class="product-name"><a href="{% url 'product_detail' product.id %}" title="19&quot; Widescreen LCD Monitor">{{  product.name }}</a></h2>
+              <h2 class="product-name"><a href="{% url 'property_detail' pro.id %}" title="19&quot; Widescreen LCD Monitor">{{  pro.name }}</a></h2>
               <div class="desc std">
                 <p>{{ product.product_veiw_count.count }}Views</p>
-                <p>{{  product.product_description }}... <a class="link-learn" title="" href="{% url 'product_detail' product.id %}">Learn More</a> </p>
+                <p>{{  pro.property_description }}... <a class="link-learn" title="" href="{% url 'property_detail' pro.id %}">Learn More</a> </p>
               </div>
               <div class="price-box"> <span class="regular-price" id="product-price-156"> <span class="price">${{ product.price }}</span> </span> </div>
               <div class="actions">
@@ -110,8 +110,8 @@
                
 
 
-                  <form action="{% url 'product_detail' product.id %}" method="get">
-                    <input type="hidden" name="product-id" value="{{ product.id }}">
+                  <form action="{% url 'property_detail' pro.id %}" method="get">
+                    <input type="hidden" name="property-id" value="{{ pro.id }}">
                  <button type="submit" class="button link-wishlist"><span>Products Detail</span>Product Detail</button>
                 </form>
                   <i class="bi bi-hand-thumbs-up"></i>
@@ -143,9 +143,9 @@
                 <label>Page:</label>
                 <ul class="pagination">
                   <ul class="pagination">
-                  {% if products.has_previous %}
+                  {% if property.has_previous %}
                  <li class="page-item">
-                <a class="page-link" href="?page={{ products.previous_page_number }}">Previous</a>
+                <a class="page-link" href="?page={{ property.previous_page_number }}">Previous</a>
               </li>
                 {% else %}
                <li class="page-item disabled">
@@ -153,17 +153,17 @@
                </li>
                {% endif %}
 
-                {% for i in products.paginator.page_range %}
-               {% if i == product_list.number %}
+                {% for i in property.paginator.page_range %}
+               {% if i == property_list.number %}
                <li class="page-item active"><a class="page-link">{{i}}</a></li>
                {% else %}
                <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
                {% endif %}
                {% endfor %}
 
-               {% if products.has_next %}
+               {% if property.has_next %}
                <li class="page-item">
-                 <a class="page-link" href="?page={{ products.next_page_number }}">Next</a>
+                 <a class="page-link" href="?page={{ property.next_page_number }}">Next</a>
               </li>
                {% else %}
                <li class="page-item disabled">

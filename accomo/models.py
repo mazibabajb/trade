@@ -44,8 +44,10 @@ class Owner(models.Model):
 class Property(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=200)
+    price = models.FloatField(default=0.0)
     number_rooms = models.IntegerField(default=1)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    property_images = models.ImageField(upload_to='cars',default='default.png')
     city = models.ForeignKey(City,on_delete=models.CASCADE)
     property_description = models.TextField(max_length=1000)
     demograpy = models.ForeignKey(Property_type, on_delete=models.CASCADE)
