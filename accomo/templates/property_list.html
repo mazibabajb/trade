@@ -90,29 +90,15 @@
               
               <h2 class="product-name"><a href="{% url 'property_detail' pro.id %}" title="19&quot; Widescreen LCD Monitor">{{  pro.name }}</a></h2>
               <div class="desc std">
-                <p>{{ product.product_veiw_count.count }}Views</p>
+                <p>{{ pro.property_veiw_count.count }} Views</p>
                 <p>{{  pro.property_description }}... <a class="link-learn" title="" href="{% url 'property_detail' pro.id %}">Learn More</a> </p>
               </div>
-              <div class="price-box"> <span class="regular-price" id="product-price-156"> <span class="price">${{ product.price }}</span> </span> </div>
+              <div class="price-box"> <span class="regular-price" id="product-price-156"> <span class="price">${{ pro.price }}</span> </span> </div>
               <div class="actions">
                 <span class="add-to-links"> 
-                
-                  <form action="{% url 'liked-post' %}" method="POST" class="ui form">
-                    {% csrf_token %}
-                    <input type="hidden" name="products_id" value="{{ product.id }}">
-                    {% if user not in product.liked.all %}
-                 <button type="submit" class="button link-wishlist"><span>Like</span>Like</button>
-                    {% else  %}
-                    <a  type="submit" class="button link-compare" href="#">Unlike</a></button> 
-                    {% endif %}
-                    <strong>{{ product.liked.all.count }}  Likes</strong>
-                </form>
-               
-
-
                   <form action="{% url 'property_detail' pro.id %}" method="get">
                     <input type="hidden" name="property-id" value="{{ pro.id }}">
-                 <button type="submit" class="button link-wishlist"><span>Products Detail</span>Product Detail</button>
+                 <button type="submit" class="button link-wishlist"><span>Property Detail</span>Property Detail</button>
                 </form>
                   <i class="bi bi-hand-thumbs-up"></i>
             </div>

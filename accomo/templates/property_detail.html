@@ -14,12 +14,12 @@
       <!--container--> 
     </div>
     <div class="page-title">
-      <h2>PRODUCT Detail</h2>
+      <h2>Property Detail</h2>
     </div>
   </div>
   <!-- BEGIN Main Container -->
   <div class="main-container col1-layout wow bounceInUp animated">
-    <div class="request-call"><a href="#" onClick="ShowMe1();"><i class="fa fa-money"></i> BACK TO PRODUCT LIST</a></div>
+    <div class="request-call"><a href="#" onClick="ShowMe1();"><i class="fa fa-money"></i> BACK TO PROPERTY LIST</a></div>
     <div class="main">
       <div class="col-main"> 
         <!-- Endif Next Previous Product -->
@@ -35,7 +35,7 @@
                   <div class="new-label new-top-left">Hot</div>
                   <div class="sale-label sale-top-left"></div>
                   <div class="product-image">
-                    <div class="product-full"> <img id="product-zoom1" src="{{ products.product_img.url }}"  alt="product-image"/> </div>
+                    <div class="product-full"> <img id="product-zoom1" src="{{ property.property_images.url }}"  alt="property-image"/> </div>
                     <div class="more-views">
                       <div class="slider-items-products">
                         <div id="gallery_02" class="product-flexslider hidden-buttons product-img-thumb">
@@ -58,20 +58,20 @@
                 <!--End For version 1,2,6--> 
                 <!-- For version 3 -->
                 <div class="product-shop col-lg- col-sm-7 col-xs-12">
-                  <div class="brand">{{ products.brand }}</div>
+                  <div class="brand" >Bulawayo</div>
                   <div class="product-name">
-                    <h1>{{ products.product_name}}</h1>
+                    <h1>{{ property.name}}</h1>
                   </div>
                   <div class="ratings">
                     <div class="rating-box">
                       <div style="width:60%" class="rating"></div>
                     </div>
-                    <p class="rating-links"> <a href="#">1 Review  Add Your Review</a> <span class="separator">|</span> <a href="#">{{product_veiw_counter.count}} veiws</a> </p>
+                    <p class="rating-links"> <a href="#">1 Review  Add Your Review</a> <span class="separator">|</span> <a href="#">{{property_veiw_counter.count}} veiws</a> </p>
                   </div>
                   <div class="price-block">
                     <div class="price-box">
                      
-                      <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-48" class="price">${{ products.price}}</span> </p><br>
+                      <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-48" class="price">${{ property.price}}</span> </p><br>
                       <div class="col">
                         <div class="row p-3">
                             
@@ -88,23 +88,23 @@
                       <tbody>
                         <tr>
                           <td class="label-spec"> Rent <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec"> {{ property.price}} </td>
                         </tr>
                         <tr>
                           <td class="label-spec">  Loction<span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec"> {{ property.location }} </td>
                         </tr>
                         <tr class="odd">
                           <td class="label-spec"> Number of rooms <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec"> {{ property.number_rooms  }} </td>
                         </tr>
                         <tr class="odd">
                           <td class="label-spec"> Demography     <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec"> {{ property.demograpy.name}} </td>
                         </tr>
                         <tr>
                           <td class="label-spec"> Condition <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec"> {{ property.product_name}} </td>
                         </tr>
                         
                       </tbody>
@@ -137,9 +137,9 @@
           <!--product-essential-->
           <div class="product-collateral container">
             <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
-              <li class="active"> <a href="#product_tabs_description" data-toggle="tab"> Product Overview </a> </li>
-              <li><a href="#product_tabs_tags" data-toggle="tab">Product  Specification</a></li>
-               <li> <a href="#reviews_tabs" data-toggle="tab">Reviews</a> </li>
+              <li class="active"> <a href="#product_tabs_description" data-toggle="tab"> Property Overview </a> </li>
+              <li><a href="#product_tabs_tags" data-toggle="tab">Propety  Specification</a></li>
+               <li> <a href="#reviews_tabs" data-toggle="tab"></a> </li>
             </ul>
             <div id="productTabContent" class="tab-content">
               <div class="tab-pane fade in active" id="product_tabs_description">
@@ -153,11 +153,11 @@
                       <tbody>
                         <tr>
                           <td class="label-spec"> Name <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec"> {{ pro.name}} </td>
                         </tr>
                         <tr>
                           <td class="label-spec">  Price <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec"> {{ pro.price}} </td>
                         </tr>
                         <tr class="odd">
                           <td class="label-spec"> Brand <span class="coln">:</span></td>
@@ -269,7 +269,7 @@
             <div class="related-pro container">
               <div class="slider-items-products">
                 <div class="new_title center">
-                  <h2>Related Products</h2>
+                  <h2>Related Properties</h2>
                 </div>
                 <div id="related-slider" class="product-flexslider hidden-buttons">
                   <div class="slider-items slider-width-col4 products-grid">
