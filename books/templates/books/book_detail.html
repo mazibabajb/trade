@@ -14,12 +14,12 @@
       <!--container--> 
     </div>
     <div class="page-title">
-      <h2>PRODUCT Detail</h2>
+      <h2>Book Detail</h2>
     </div>
   </div>
   <!-- BEGIN Main Container -->
   <div class="main-container col1-layout wow bounceInUp animated">
-    <div class="request-call"><a href="#" onClick="ShowMe1();"><i class="fa fa-money"></i> BACK TO PRODUCT LIST</a></div>
+    <div class="request-call"><a href="#" onClick="ShowMe1();"><i class="fa fa-money"></i> BACK TO BOOK LIST</a></div>
     <div class="main">
       <div class="col-main"> 
         <!-- Endif Next Previous Product -->
@@ -35,7 +35,7 @@
                   <div class="new-label new-top-left">Hot</div>
                   <div class="sale-label sale-top-left"></div>
                   <div class="product-image">
-                    <div class="product-full"> <img id="product-zoom1" src="{{ products.product_img.url }}"  alt="product-image"/> </div>
+                    <div class="product-full"> <img id="product-zoom1" src="{{ book.book_thumbnail.url }}"  alt="{{ book.title }}"/> </div>
                     <div class="more-views">
                       <div class="slider-items-products">
                         <div id="gallery_02" class="product-flexslider hidden-buttons product-img-thumb">
@@ -58,9 +58,9 @@
                 <!--End For version 1,2,6--> 
                 <!-- For version 3 -->
                 <div class="product-shop col-lg- col-sm-7 col-xs-12">
-                  <div class="brand">{{ products.brand }}</div>
+                  <div class="brand">{{ book.auther }}</div>
                   <div class="product-name">
-                    <h1>{{ products.product_name}}</h1>
+                    <h1> book.title</h1>
                   </div>
                   <div class="ratings">
                     <div class="rating-box">
@@ -83,35 +83,31 @@
                   </div>
                  
                   <div class="spec-row" id="summarySpecs">
-                  <h2>Product Specifications</h2>
+                  <h2>Book Specifications</h2>
                     <table width="100%">
                       <tbody>
                         <tr>
-                          <td class="label-spec"> Name <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="label-spec"> Book Title <span class="coln">:</span></td>
+                          <td class="value-spec"> {{ book.title}} </td>
                         </tr>
                         <tr>
-                          <td class="label-spec">  Price <span class="coln">:</span></td>
+                          <td class="label-spec">  Author <span class="coln">:</span></td>
                           <td class="value-spec"> {{ products.product_name}} </td>
                         </tr>
                         <tr class="odd">
-                          <td class="label-spec"> Brand <span class="coln">:</span></td>
+                          <td class="label-spec"> Publisher <span class="coln">:</span></td>
                           <td class="value-spec"> {{ products.product_name}} </td>
                         </tr>
                         <tr class="odd">
-                          <td class="label-spec"> Size <span class="coln">:</span></td>
+                          <td class="label-spec"> Number of pages <span class="coln">:</span></td>
                           <td class="value-spec"> {{ products.product_name}} </td>
                         </tr>
                         <tr>
-                          <td class="label-spec"> Coulor <span class="coln">:</span></td>
+                          <td class="label-spec"> Year <span class="coln">:</span></td>
                           <td class="value-spec"> {{ products.product_name}} </td>
                         </tr>
                         <tr>
-                          <td class="label-spec"> Material <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
-                        </tr>
-                        <tr class="odd">
-                          <td class="label-spec"> In stock <span class="coln">:</span></td>
+                          <td class="label-spec"> Addition <span class="coln">:</span></td>
                           <td class="value-spec"> {{ products.product_name}} </td>
                         </tr>
                       </tbody>
@@ -144,14 +140,13 @@
           <!--product-essential-->
           <div class="product-collateral container">
             <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
-              <li class="active"> <a href="#product_tabs_description" data-toggle="tab"> Product Overview </a> </li>
-              <li><a href="#product_tabs_tags" data-toggle="tab">Product  Specification</a></li>
-               <li> <a href="#reviews_tabs" data-toggle="tab">Reviews</a> </li>
+              <li class="active"> <a href="#product_tabs_description" data-toggle="tab"> Book Overview </a> </li>
+
             </ul>
             <div id="productTabContent" class="tab-content">
               <div class="tab-pane fade in active" id="product_tabs_description">
                 <div class="std">
-                  <p>{{ products.product_Long_description}}.</p>
+                  <p>{{ book.book_summary }}</p>
                 </div>
               </div>
               <div class="tab-pane fade" id="product_tabs_tags">
@@ -280,11 +275,11 @@
                 </div>
                 <div id="related-slider" class="product-flexslider hidden-buttons">
                   <div class="slider-items slider-width-col4 products-grid">
-                  {% for products in related_products %}
+                  {% for boo in related_topics %}
                     <div class="item">
                       <div class="item-inner">
                         <div class="item-img">
-                          <div class="item-img-info"><a href="{% url 'product_detail' products.id %}" title="Retis lapen casen" class="product-image"><img src="{{ products.product_img.url}}" alt="Retis lapen casen"></a>
+                          <div class="item-img-info"><a href="" title="Retis lapen casen" class="product-image"><img src="{{ boo.book_thumbnail.url}}" alt="Retis lapen casen"></a>
                             <div class="new-label new-top-left">Used</div>
                             <div class="sale-label sale-top-left">-15%</div>
                             <div class="item-box-hover">
@@ -300,7 +295,7 @@
                         </div>
                         <div class="item-info">
                           <div class="info-inner">
-                            <div class="item-title"><a href="{% url 'product_detail' products.id %}" title="Retis lapen casen">{{ products.product_name }}</a> </div>
+                            <div class="item-title"><a href="" title="Retis lapen casen">{{ boo.title }}</a> </div>
                             <div class="item-content">
                               <div class="rating">
                                 <div class="ratings">
@@ -311,7 +306,7 @@
                                 </div>
                               </div>
                               <div class="item-price">
-                                <div class="price-box"><span class="regular-price"><span class="price">${{ products.price}}</span> </span> </div>
+                                <div class="price-box"><span class="regular-price"><span class="price">${{ boo.price}}</span> </span> </div>
                               </div>
                               <div class="other-info">
                 

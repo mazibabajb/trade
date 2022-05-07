@@ -88,11 +88,14 @@
             <ol class="products-list" id="products-list">
           {% for book in books %}
           <li class="item even">
-            <div class="product-image"> <a href="product-detail.html" title="19&quot; Widescreen LCD Monitor"> <img class="small-image" src="{{ book.book_thumbnail.url }}" alt="19&quot; Widescreen LCD Monitor"> </a> </div>
+            <div class="product-image"> 
+              <a href="product-detail.html" title="19&quot; Widescreen LCD Monitor">
+                 <img class="small-image" src="{{ book.book_thumbnail.url }}" alt="{{ book.title }}"> </a> 
+                </div>
             <div class="product-shop">
-              <h2 class="product-name"><a href="{% url 'book_detail' book.id %}" title="19&quot; Widescreen LCD Monitor">{{  book.auther }}</a></h2>
+              <h2 class="product-name"><a href="{% url 'book_detail' book.id %}" title="19&quot; Widescreen LCD Monitor">{{  book.title }}</a></h2>
               <div class="desc std">
-                <p>{{  products.product_description }}... <a class="link-learn" title="" href="{% url 'book_detail' book.id %}">Learn More</a> </p>
+                <p>{{  book.book_summary }}... <a class="link-learn" title="" href="{% url 'book_detail' book.id %}">Learn More</a> </p>
               </div>
               <div class="price-box"> <span class="regular-price" id="product-price-156"> <span class="price">${{ book.price }}</span> </span> </div>
               <div class="actions">

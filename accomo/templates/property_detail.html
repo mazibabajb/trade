@@ -40,9 +40,9 @@
                       <div class="slider-items-products">
                         <div id="gallery_02" class="product-flexslider hidden-buttons product-img-thumb">
                           <div class="slider-items slider-width-col4 block-content">
-                            {% for pi in products.product_images_set.all %}
+                            {% for pi in property.property_images_set.all %}
                            <div class="more-views-items p-3"class="col-md-4" > 
-                            <img class="thumbnail" id="product-zoom0"  src="{{ pi.product_img.url }}" class="img-fluid" style="height: 100px; object-fit: contain;" alt="product-image"/> 
+                            <img class="thumbnail" id="product-zoom0"  src="{{ pi.property_img.url }}" class="img-fluid" style="height: 100px; object-fit: contain;" alt="{{ property.name}}"/> 
                             </a>
                             </div>
                             {% endfor %}
@@ -138,13 +138,12 @@
           <div class="product-collateral container">
             <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
               <li class="active"> <a href="#product_tabs_description" data-toggle="tab"> Property Overview </a> </li>
-              <li><a href="#product_tabs_tags" data-toggle="tab">Propety  Specification</a></li>
                <li> <a href="#reviews_tabs" data-toggle="tab"></a> </li>
             </ul>
             <div id="productTabContent" class="tab-content">
               <div class="tab-pane fade in active" id="product_tabs_description">
                 <div class="std">
-                  <p>{{ products.product_Long_description}}.</p>
+                  <p>{{ property.property_description}}.</p>
                 </div>
               </div>
               <div class="tab-pane fade" id="product_tabs_tags">
@@ -273,27 +272,25 @@
                 </div>
                 <div id="related-slider" class="product-flexslider hidden-buttons">
                   <div class="slider-items slider-width-col4 products-grid">
-                  {% for products in related_products %}
+                  {% for products in related_properties %}
                     <div class="item">
                       <div class="item-inner">
                         <div class="item-img">
-                          <div class="item-img-info"><a href="{% url 'product_detail' products.id %}" title="Retis lapen casen" class="product-image"><img src="{{ products.product_img.url}}" alt="Retis lapen casen"></a>
+                          <div class="item-img-info"><a href="{% url 'property_detail' products.id %}" title="Retis lapen casen" class="product-image"><img src="{{ products.property_images.url}}" alt="{{ products.name }}"></a>
                             <div class="new-label new-top-left">Used</div>
                             <div class="sale-label sale-top-left">-15%</div>
                             <div class="item-box-hover">
                               <div class="box-inner">
                                 <div class="add_cart">
-                                  <button type="button" id="add-button" value="{{product.id}}" ></button>
+                                  <button type="button" id="add-button" value="{{products.id}}" ></button>
                                 </div>
-                                <div class="product-detail-bnt"><a class="button detail-bnt"><span>Quick View</span></a></div>
-                                <div class="actions"><span class="add-to-links"><a href="#" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> </span> </div>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="item-info">
                           <div class="info-inner">
-                            <div class="item-title"><a href="{% url 'product_detail' products.id %}" title="Retis lapen casen">{{ products.product_name }}</a> </div>
+                            <div class="item-title"><a href="{% url 'property_detail' products.id %}" title="Retis lapen casen">{{ products.name }}</a> </div>
                             <div class="item-content">
                               <div class="rating">
                                 <div class="ratings">

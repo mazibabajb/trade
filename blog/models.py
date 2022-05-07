@@ -12,8 +12,9 @@ class PostCategory(models.Model):
 
 
 class Post(models.Model):
-	title = models.CharField(max_length=100)
-	description = models.CharField(max_length=300,default='Tradebay blog posts')
+	seo_title = models.CharField(max_length=100)
+	seo_description = models.CharField(max_length=300,default='Tradebay blog posts')
+	title = models.CharField(max_length=200,default='Tradebay')
 	category =models.ForeignKey(PostCategory,on_delete=models.CASCADE)
 	content = models.TextField(max_length=4000)
 	date_posted = models.DateTimeField(default=timezone.now)

@@ -92,19 +92,19 @@
                         </tr>
                         <tr>
                           <td class="label-spec">  Price <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec">$ {{ products.price}} </td>
                         </tr>
                         <tr class="odd">
                           <td class="label-spec"> Brand <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec"> {{ products.brand}} </td>
                         </tr>
                         <tr class="odd">
                           <td class="label-spec"> Size <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec"> {{ products.size}} </td>
                         </tr>
                         <tr>
                           <td class="label-spec"> Coulor <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec"> {{ products.colour}} </td>
                         </tr>
                         <tr>
                           <td class="label-spec"> Material <span class="coln">:</span></td>
@@ -112,7 +112,7 @@
                         </tr>
                         <tr class="odd">
                           <td class="label-spec"> In stock <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec"> {{ products.is_instock }} </td>
                         </tr>
                       </tbody>
                     </table>
@@ -146,7 +146,7 @@
             <ul id="product-detail-tab" class="nav nav-tabs product-tabs">
               <li class="active"> <a href="#product_tabs_description" data-toggle="tab"> Product Overview </a> </li>
               <li><a href="#product_tabs_tags" data-toggle="tab">Product  Specification</a></li>
-               <li> <a href="#reviews_tabs" data-toggle="tab">Reviews</a> </li>
+               
             </ul>
             <div id="productTabContent" class="tab-content">
               <div class="tab-pane fade in active" id="product_tabs_description">
@@ -164,27 +164,23 @@
                         </tr>
                         <tr>
                           <td class="label-spec">  Price <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec">$ {{ products.price}} </td>
                         </tr>
                         <tr class="odd">
                           <td class="label-spec"> Brand <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec"> {{ products.brand}} </td>
                         </tr>
                         <tr class="odd">
                           <td class="label-spec"> Size <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec"> {{ products.size}} </td>
                         </tr>
                         <tr>
                           <td class="label-spec"> Coulor <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
-                        </tr>
-                        <tr>
-                          <td class="label-spec"> Material <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec"> {{ products.colour}} </td>
                         </tr>
                         <tr class="odd">
                           <td class="label-spec"> In stock <span class="coln">:</span></td>
-                          <td class="value-spec"> {{ products.product_name}} </td>
+                          <td class="value-spec"> {{ products.is_instock}} </td>
                         </tr>
                       </tbody>
                     </table>

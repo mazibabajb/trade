@@ -5,7 +5,11 @@ from django.core.paginator import Paginator , EmptyPage
 # Create your views here.
 
 def Property_view(request):
-	return render(request, 'property_list.html')	
+    context = {	
+				'title':'Tradebay property list',
+        		'description': 'Properties for sale to rent in zimbabwe'
+				}
+    return render(request, 'property_list.html',context)	
 
 def Property_detail(request,id):
     property = Property.objects.get(id=id)
@@ -14,9 +18,13 @@ def Property_detail(request,id):
         veiw = PropertyViewCount(property=property,ip_address=ip,session = request.session.session_key)
         veiw.save()
     property_veiw_counter = PropertyViewCount.objects.filter(property=property)
+    related_properties = Property.objects.filter(category = property.category).exclude(id=id)[:2]
     context = {
 		'property': property,	
         'property_veiw_counter':property_veiw_counter,
+        'title':property.seo_title,
+        'description': property.seo_description,
+        'related_properties':related_properties
 	}
     return  render(request, "property_detail.html",context)
 

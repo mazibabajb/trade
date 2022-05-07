@@ -22,6 +22,8 @@ def product_listing(request):
     
     context = {	'products':page ,
 				'productCategories':productCategories,
+                'title':'Tradebay Online shopping  Phones ||  TVS  ||',
+                'description': 'description'
 				}
     return context            
     

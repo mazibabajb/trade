@@ -92,8 +92,8 @@ class SubCategories(models.Model):
 
 
 class Products(models.Model):
-    title = models.CharField(max_length=100,default="Tradebay Online shopping  Phones ||  TVS  ||")
-    description = models.CharField(max_length=100,default="Tradebay is an online shopping platform  in zimbabwe")
+    seo_title = models.CharField(max_length=100,default="Tradebay Online shopping  Phones ||  TVS  ||")
+    seo_description = models.CharField(max_length=100,default="Tradebay is an online shopping platform  in zimbabwe")
     id = models.AutoField(primary_key=True)
     url_slug = models.SlugField(max_length=255) 
     subcategories_id = models.ForeignKey(SubCategories,on_delete=models.CASCADE)
@@ -104,7 +104,7 @@ class Products(models.Model):
     product_discount_price = models.CharField(max_length=255,default=False)
     product_description = models.TextField()
     product_Long_description = models.TextField(blank=True)
-    product_img = models.ImageField(upload_to='cars',default='default.PNG') 
+    product_img = models.ImageField(upload_to='cars',default='default-car.png') 
     created_at = models.DateTimeField(auto_now_add=True)
     added_by_mechant = models.ForeignKey(MerchantUser,on_delete=models.CASCADE)
     is_onsale = models.BooleanField(default=False)

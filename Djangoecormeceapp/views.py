@@ -37,7 +37,7 @@ def demoPage(request):
 
 def erro_page(request,exception):
     context = {
-        'title':'Tradebay Online shopping  Phones ||  TVS  ||',
+        'title':'The page you requested could not be found',
         'description': 'Tradebay is an online shopping platform  in zimbabwe'
     }
     return render(request,"front_end_templates/error.html",context)
@@ -103,7 +103,12 @@ def home_product_detail(request, id, url_slug):
 
 
 def Product_view(request):
-	return render(request, 'front_end_templates/products_list_view.html')
+    context= {
+        'title':'Tradebay product list',
+        'description':'Cars , houses, tvs, phones for sale  around zimbabwe',
+
+    }
+    return render(request, 'front_end_templates/products_list_view.html',context)
 
 
 def get_ip(request):
@@ -130,8 +135,8 @@ def product_detail(request, id):
         'cart_product_form':cart_product_form,
         'related_products': related_products,
         'product_images': product_images,
-        'title':products.title,
-        'description':products.description ,
+        'title':products.seo_title,
+        'description':products.seo_description ,
         'product_veiw_counter':product_veiw_counter
 		
 	}
@@ -251,7 +256,7 @@ def Contact_Us(request):
 def BlogList(request):
     context = {
         'title':'Tradebay Online shopping  Phones ||  TVS  ||',
-        'detail': 'Tradebay is an online shopping platform  in zimbabwe'
+        'description': 'Tradebay is an online shopping platform  in zimbabwe'
 
     }
     return render(request,"front_end_templates/blog_list.html",context) 

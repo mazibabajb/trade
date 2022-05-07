@@ -118,7 +118,7 @@ version:   	1.4.5
 	letter-spacing:1px;
 	font-size:32px;
 	font-weight: normal;
-	color:#6c6;
+	color:#ff007b;
 	text-transform:uppercase
 }
 .tp-caption.LargeTitle {
@@ -164,9 +164,9 @@ version:   	1.4.5
 	border:none;
 	margin-top: 45px;
 	float: left;
-	background: #d9eb3d ;
+	background: #ff007b ;
 	border-radius:0px;
-	border-bottom:3px #c6d535 solid
+	border-bottom:3px #ff007b solid
 }
 .buy-btn:hover {
 	background: #fed700;
@@ -346,7 +346,7 @@ font-size:24px;
 }
 .home-slider5 .tp-leftarrow.default:hover,
 .home-slider5 .tp-rightarrow.default:hover {
-    background-color: #d9eb3d;
+    background-color: #ff007b;
 }
 .home-slider5 .forcefullwidth_wrapper_tp_banner,
 .fullwidthbanner-container {

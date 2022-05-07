@@ -11,8 +11,8 @@ def Property_listings(request):
 		property = Property.objects.filter(category__name=propertyCategory)	
 
 	propertyCategories = Category.objects.all()
-	page_num = request.GET.get('page', 3)
-	p = Paginator(property, 1)
+	page_num = request.GET.get('page', 1)
+	p = Paginator(property, 10)
 
 	try:
 		page = p.page(page_num)
@@ -22,7 +22,5 @@ def Property_listings(request):
     	
 	context = {	'property':page ,
 				'propertyCategories':propertyCategories,
-				'title':'Tradebay blog posts ',
-        		'description': 'These are tradebay blog posts'
 				}
 	return context

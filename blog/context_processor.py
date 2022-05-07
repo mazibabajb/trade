@@ -4,7 +4,7 @@ from django.core.paginator import Paginator , EmptyPage
 
 
 def post_list(request):
-    post_title = Post.objects.filter(title=title)
+    
     is_trending = Post.objects.filter(is_trending = True).order_by('-id')
     postCategory = request.GET.get('postCategory')
     if postCategory == None:
@@ -13,8 +13,8 @@ def post_list(request):
         posts = Post.objects.filter(category__name=postCategory)	
 
     postCategories = PostCategory.objects.all()
-    page_num = request.GET.get('page', 3)
-    p = Paginator(posts, 1)
+    page_num = request.GET.get('page', 1)
+    p = Paginator(posts, 5)
 
     try:
         page = p.page(page_num)
@@ -25,7 +25,7 @@ def post_list(request):
     context = {	'posts':page ,
 				'is_trending':is_trending ,
 				'postCategories':postCategories,
-				'post_title':post_title,
-        		'description': 'These are tradebay blog posts'
+				'title':"The tradebay blog post",
+        		'description': 'These are tradebay blog post'
 				}
     return context	

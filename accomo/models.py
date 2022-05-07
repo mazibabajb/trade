@@ -40,6 +40,8 @@ class Owner(models.Model):
 
 
 class Property(models.Model):
+    seo_title =  models.CharField(max_length=200,default="Tradebay property detail")
+    seo_description =  models.CharField(max_length=200,default="Tradebay property detail")
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=200)
     price = models.FloatField(default=0.0)
@@ -77,7 +79,7 @@ class Like(models.Model):
 
 class Property_images(models.Model):
     product_id = models.ForeignKey(Property,on_delete=models.CASCADE,related_name="pictures")
-    property_img = models.ImageField(upload_to='cars',default='default-car.png')  
+    property_img = models.ImageField(upload_to='cars')  
 
 
     def __str__(self):

@@ -13,13 +13,13 @@ def book_listings(request):
         	
 	bookCategories = Category.objects.all()
 	page_num = request.GET.get('page', 1)
-	p = Paginator(books, 1)
+	p = Paginator(books, 10)
 
 	try:
 		page = p.page(page_num)
 
 	except EmptyPage:
-		page = p.page(1)
+		page = p.page(2)
     
 	context = {	'books':page ,
 				'bookCategories':bookCategories,

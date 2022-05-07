@@ -85,7 +85,7 @@
             <ol class="products-list" id="products-list">
           {% for product in products %}
           <li class="item even">
-            <div class="product-image"> <a href="product-detail.html" title="19&quot; Widescreen LCD Monitor"> <img class="small-image" src="{{ product.product_img.url }}" alt="19&quot; Widescreen LCD Monitor"> </a> </div>
+            <div class="product-image"> <a href="" title="19&quot; Widescreen LCD Monitor"> <img class="small-image" src="{{ product.product_img.url }}" alt="{{  product.product_name }}"> </a> </div>
             <div class="product-shop">
               
               <h2 class="product-name"><a href="{% url 'product_detail' product.id %}" title="19&quot; Widescreen LCD Monitor">{{  product.product_name }}</a></h2>

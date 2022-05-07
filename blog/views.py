@@ -12,7 +12,11 @@ def blogsearchbar(request):
         return render(request,"front_end_templates/blog_search.html",{'posts':posts})
 
 def Post_view(request):
-	return render(request, 'front_end_templates/blog_list.html')	
+	context = {	
+				'title':"Tradebay Blog Post",
+        		'description': 'These are tradebay blog post'
+				}
+	return render(request, 'front_end_templates/blog_list.html',context)	
 
 
 def blog_detail(request, id):
@@ -24,8 +28,8 @@ def blog_detail(request, id):
 		'posts': posts,
 		'is_trending':is_trending ,
 		'postCategories':postCategories,
-		'title':posts.title,
-        'description':posts.description
+		'title':posts.seo_title,
+        'description':posts.seo_description
 	}
 	return render(request, "front_end_templates/blog_detail.html",context)
 

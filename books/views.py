@@ -1,4 +1,5 @@
 
+from unicodedata import category
 from django.shortcuts import render
 from .models import Book, Category ,Author
 from django.http import HttpResponse, response
@@ -20,11 +21,20 @@ def download(request,path):
 
 def book_detail(request, id):
     books = Book.objects.get(id=id)
+    related_topics = Book.objects.filter(category = books.category).exclude(id=id)[:2]
     context = {
-		'books': books,	
+		'books': books,
+        'title': books.seo_title,
+        'description':books.seo_description,
+        'related_topics':related_topics
 	}
     return render(request, "books/book_detail.html",context)    
 
 
 def book_list(request):
-	return render(request, 'books/book_list.html')
+    context= {
+        'title':'Tradebay book list',
+        'description':'Books from Authour around zimbabwe',
+
+    }
+    return render(request, 'books/book_list.html',context)
